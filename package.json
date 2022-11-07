@@ -1,0 +1,9 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "react typesctipt practices",
+  "main": "index.js",
+  "repository": "https://github.com/kakapo-hdl/React-Typescript.git",
+  "author": "mordy",
+  "license": "MIT"
+}
