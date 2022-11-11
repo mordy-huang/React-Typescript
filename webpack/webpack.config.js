@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin")
 const WebpackBar = require('webpackbar');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
-
+const ACTION_TYPE = process.env.ACTION_TYPE;
+const port = 3000
 module.exports = {
   // mode: "development",
   entry: {
@@ -35,7 +35,14 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
-          'less-loader',
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
           {
             loader: "postcss-loader",
             options: {
@@ -75,19 +82,19 @@ module.exports = {
     ]
   },
   plugins: [
-    // new FriendlyErrorsWebpackPlugin({
-    //   compilationSuccessInfo: {
-    //     messages: ['You application is running here http://localhost:8000'],
-    //     notes: ['Some additionnal notes to be displayed unpon successful compilation']
-    //   },
-    //   onErrors: function (severity, errors) {
-    //     // You can listen to errors transformed and prioritized by the plugin
-    //     // severity can be 'error' or 'warning'
-    //   },
-    //   clearConsole: true,
-    //   additionalFormatters: [],
-    //   additionalTransformers: []
-    // }),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ACTION_TYPE == "serve" ? ['You application is running here http://localhost:' + port] : [],
+        // notes: ['Some additionnal notes to be displayed unpon successful compilation']
+      },
+      onErrors: function (severity, errors) {
+        // You can listen to errors transformed and prioritized by the plugin
+        // severity can be 'error' or 'warning'
+      },
+      clearConsole: true,
+      additionalFormatters: [],
+      additionalTransformers: []
+    }),
     new WebpackBar({
       color: "#85d",  // 默认green，进度条颜色支持HEX
       basic: false,   // 默认true，启用一个简单的日志报告器
@@ -110,7 +117,7 @@ module.exports = {
   //   '@': path.resolve(__dirname, 'src')
   // },
   devServer: {
-    port: 3000,
+    port: port,
     open: true,
     historyApiFallback: { index: "/", disableDotRule: true },
     client: {
@@ -118,7 +125,7 @@ module.exports = {
       overlay: {  //有报错发生，直接覆盖浏览器视窗，显示错误
         errors: true,
         warnings: false,
-      
+
       },
     },
   },

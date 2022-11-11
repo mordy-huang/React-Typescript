@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash": "^4.14.188",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/react-router-dom": "^5.3.3",
@@ -38,9 +39,9 @@
     "webpackbar": "^5.0.2"
   },
   "scripts": {
-    "build": "webpack --config webpack/webpack.dev.js",
+    "build": "cross-env ACTION_TYPE=build  webpack --config webpack/webpack.dev.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
-    "start": "webpack serve --config webpack/webpack.dev.js",
+    "start": "cross-env ACTION_TYPE=serve webpack serve --config webpack/webpack.dev.js",
     "lint": "eslint . --ext .ts && eslint . --ext .tsx",
     "lint:fix": "eslint --fix"
   },
@@ -51,13 +52,16 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "antd": "^4.24.1",
     "babel-loader": "^9.1.0",
     "connected-react-router": "^6.9.3",
     "eslint": "^8.27.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "formik": "^2.2.9",
     "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
     "match-sorter": "^6.3.1",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
