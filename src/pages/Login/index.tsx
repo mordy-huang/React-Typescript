@@ -5,6 +5,7 @@ import { Formik, Field, useFormik } from "formik";
 import { FormikHelpers, FormikProps } from "formik/dist/types";
 import React, { useRef, useEffect } from "react";
 import * as Inputs from "@/components/InputComponents";
+import FormItem from "antd/es/form/FormItem";
 
 interface Values {
   username: string;
@@ -79,8 +80,13 @@ const Login: React.FC = () => {
       >
         {/* <Form> */}
         <form>
-          <Inputs.Input name={"username"} isDisabled={false} />
-        
+          <FormItem label={"User Name"}>
+            <Inputs.Input name={"username"} isDisabled={false} />
+          </FormItem>
+          <FormItem label={"Password"}>
+          <Inputs.Input name={"password"} isDisabled={false} />
+          </FormItem>
+          
           <Button onClick={() => onSubmit()}> Submit </Button>
         </form>
 
