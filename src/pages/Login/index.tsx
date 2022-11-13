@@ -1,10 +1,9 @@
 import Button from "antd/lib/button/button";
 import Checkbox from "antd/lib/checkbox";
-import Form from "antd/lib/form";
 import Input from "antd/lib/input";
-import { Formik, Field,useFormik } from "formik";
-import { FormikHelpers,FormikProps } from "formik/dist/types";
-import React, { useRef } from "react";
+import { Formik, Field, useFormik } from "formik";
+import { FormikHelpers, FormikProps } from "formik/dist/types";
+import React, { useRef, useEffect } from "react";
 import * as Inputs from "@/components/InputComponents";
 
 interface Values {
@@ -14,15 +13,18 @@ interface Values {
 }
 
 const Login: React.FC = () => {
-  const formikRef = useRef<FormikProps<Values>>() as React.Ref<FormikProps<Values>>;
+  const formikRef = React.useRef<FormikProps<Values>>(null);
   const onFinish = (values: any) => {
     console.log("Success:", values);
   };
-  formikRef.current?.submitForm()
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
 
+  const onSubmit = () => {
+    formikRef.current?.submitForm()
+
+  }
   return (
     <>
       {" "}
@@ -75,11 +77,13 @@ const Login: React.FC = () => {
           }, 500);
         }}
       >
-        <Form>
+        {/* <Form> */}
+        <form>
           <Inputs.Input name={"username"} isDisabled={false} />
+        
+          <Button onClick={() => onSubmit()}> Submit </Button>
+        </form>
 
-          <button type="submit">Submit</button>
-        </Form>
       </Formik>
     </>
   );
