@@ -7,6 +7,7 @@ import "./index.less";
 import "./index.css";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "./store";
+import "./mocks/index";
 const container: HTMLElement = document.getElementById("root")!;
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(

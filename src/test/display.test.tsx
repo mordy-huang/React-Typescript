@@ -8,6 +8,6 @@ const Link: React.FC<{ page: string; children: any }> = ({ page, children }) => 
 );
 
 it("renders correctly", () => {
-  const tree = renderer.create(<Link page="s">Facebook</Link>).toJSON();
+  const tree = renderer.create(<Link page="s">Faceboo</Link>).toJSON();
   expect(tree).toMatchSnapshot();
 });

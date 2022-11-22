@@ -7,7 +7,10 @@ import React, { useRef, useEffect } from "react";
 import FormItem from "antd/es/form/FormItem";
 import * as Yup from "yup";
 import * as Inputs from "@/components/InputComponents";
-
+import { AppDispatch } from "@/store";
+import { login } from "../Home/HomeSlice";
+import { useDispatch } from "react-redux";
+import { testMock } from "@/store/GrobalSlice";
 export interface Values {
   username: string;
   password: string;
@@ -53,6 +56,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Login: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const formikRef = React.useRef<FormikProps<Values>>(null);
   const onSubmit = () => {
     formikRef.current?.submitForm();
@@ -87,7 +91,9 @@ const Login: React.FC = () => {
           setSubmitting(true);
           try {
             SignupSchema.validateSync(values, { abortEarly: false });
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
+            dispatch(login(JSON.stringify(values)));
+            dispatch(testMock())
             setSubmitting(false);
           } catch (errors) {
             const error = getErrorsFromValidationError(errors);
