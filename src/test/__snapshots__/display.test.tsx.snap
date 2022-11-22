@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <a
   className="normal"
-  href="s"
+  href="http://www.facebook.com"
 >
   Facebook
 </a>

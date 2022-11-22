@@ -1,6 +1,14 @@
 module.exports = {
-  // [...]
-  // Replace `ts-jest` with the preset you want to use
-  // from the above list
-  preset: 'ts-jest'
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
 };
