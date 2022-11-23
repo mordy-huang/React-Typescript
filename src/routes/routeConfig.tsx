@@ -9,7 +9,6 @@ const routes = [
     path: "/Home",
     component: Home,
     authorization:true,
-
   },
   {
     path: "/Test",

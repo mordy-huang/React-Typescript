@@ -6,13 +6,29 @@ import routes from "./routeConfig";
 interface isLogin {
   isLogin: boolean;
   pathname: string;
+  authorization:boolean|undefined
 }
-const GuardedRoute = ({ isLogin, pathname, ...props }: isLogin) => {
-  if (isLogin) {
-    return <Route {...props} />;
+const GuardedRoute = ({ isLogin, pathname,authorization, ...props }: isLogin) => {
+  console.log(props);
+  
+  if(authorization){
+    if (isLogin) {
+      return <Route {...props} />;
+    }else{
+      console.log("You are redirected because you are not logged in");
+      return <Redirect to="/Login" />;
+    }
+  }else{
+    if(isLogin){
+      return <Redirect to="/Home" />;
+
+    }else{
+      return <Route {...props} />;
+
+    }
   }
-  console.log("You are redirected because you are not logged in");
-  return <Redirect to="/Login" />;
+
+
 };
 
 const RenderRouter = () => {
@@ -21,15 +37,9 @@ const RenderRouter = () => {
   const pathname = state.router.location.pathname;
 
   return (
+  
     <Switch>
-      {routes.map(route =>
-        route.authorization ? (
-          <GuardedRoute isLogin={isLogin} pathname={pathname} {...route}></GuardedRoute>
-        ) : isLogin ? (
-          <Route {...route}></Route>
-        ) : (
-          <Redirect to="/Home" />
-        )
+      {routes.map(route =><GuardedRoute key={route.path} isLogin={isLogin} pathname={pathname} authorization={route.authorization} {...route}></GuardedRoute>
       )}
     </Switch>
   );
