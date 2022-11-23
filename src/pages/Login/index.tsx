@@ -8,9 +8,9 @@ import FormItem from "antd/es/form/FormItem";
 import * as Yup from "yup";
 import * as Inputs from "@/components/InputComponents";
 import { AppDispatch } from "@/store";
-import { login } from "../Home/HomeSlice";
+import { login } from "../Home/models/HomeSlice";
 import { useDispatch } from "react-redux";
-import { testMock } from "@/store/GrobalSlice";
+import { testMock, validateAccount } from "@/store/GrobalSlice";
 export interface Values {
   username: string;
   password: string;
@@ -87,13 +87,12 @@ const Login: React.FC = () => {
           password: "",
           remember: false,
         }}
-        onSubmit={(values: Values, { setSubmitting, setErrors }: FormikHelpers<Values>) => {
+        onSubmit={ async(values: Values, { setSubmitting, setErrors }: FormikHelpers<Values>) => {
           setSubmitting(true);
+
           try {
             SignupSchema.validateSync(values, { abortEarly: false });
-            // alert(JSON.stringify(values, null, 2));
-            dispatch(login(JSON.stringify(values)));
-            dispatch(testMock())
+            dispatch(validateAccount(values))
             setSubmitting(false);
           } catch (errors) {
             const error = getErrorsFromValidationError(errors);

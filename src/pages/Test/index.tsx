@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   loginout,
-} from "@/pages/Home/HomeSlice";
+} from "@/pages/Home/models/HomeSlice";
 const Test: React.FC = () => {
   const dispatch = useDispatch()
   const router = useSelector((state: RootState) => state.router);

@@ -10,14 +10,15 @@ import {
   login,
   loginout,
   fetchUserById,
-} from "./HomeSlice";
-import { Link } from "react-router-dom";
+} from "./models/HomeSlice";
+import { Link, useHistory } from "react-router-dom";
 
 // export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { value, loading, user } = useSelector(selectCount);
+  const history = useHistory()
   const router = useSelector((state: RootState) => state.router);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
+      <Link to={"/Login"}>to Login</Link> <br></br>
       {router.location.pathname}
       Loading: {loading ? "true" : "false"}
       <Link to={"/test"}>to test</Link>

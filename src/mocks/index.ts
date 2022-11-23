@@ -1,54 +1,37 @@
-import Mock from 'mockjs';
+import { LoginAccount } from "@/types";
+import Mock from "mockjs";
 
-
-Mock.mock('user/validateAccount', 'post', (username: string, password: string) => {
+const Random = Mock.Random;
+Mock.mock("/user/validateAccount", "post", (data) => {
   let response;
-  if (password === "123456") {
+  const requestData:LoginAccount =  JSON.parse(data.body);  
+  if (requestData.password === "123456") {
     const res = Mock.mock({
       username: "@cname",
-      loginTime: '@now()'
-    })
-
+      loginTime: "@now()",
+      avator:Random.image('100x100', Random.color(), '@cname')
+    });
     response = {
-      status: 200,
-      data: res
-    }
-  }
-  else {
+        data:res,
+        success:true,
+        msg:"ok"
+    };
+  } else {
     response = {
-      status: 500,
-      data: {
-        msg: "password error"
-      }
-    }
+        success:false,
+        msg: "password error",
+    };
   }
   return response;
-}
-)
+});
 
-
-Mock.mock('/user/test', 'get', () => {
-    const res = Mock.mock({
-      username: "@cname",
-      time: '@now()'
-    })
-
-    return  {
-      status: 200,
-      data: res
-    }
-}
-)
-// export default Mock;
-// Mock.mock('/user/test', 'get', () => {
-//   const res = mock.mock({
-//     username: "@cname",
-//     time: '@now()'
-//   })
-
-//   return  {
-//     status: 200,
-//     data: res
-//   }
-// }
-// );
+Mock.mock("/user/test", "get", () => {
+  const res = Mock.mock({
+    username: "@cname",
+    time: "@now()",
+  });
+  return {
+    data: res,
+    msg:"ok"
+  };
+});
