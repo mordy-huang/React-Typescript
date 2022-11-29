@@ -2,7 +2,7 @@ import { LoginAccount } from "@/types";
 import Mock from "mockjs";
 
 const Random = Mock.Random;
-Mock.mock("/user/validateAccount", "post", (data) => {
+Mock.mock("/mock/user/validateAccount", "post", (data) => {
   let response;
   const requestData:LoginAccount =  JSON.parse(data.body);  
   if (requestData.password === "123456") {
@@ -25,7 +25,7 @@ Mock.mock("/user/validateAccount", "post", (data) => {
   return response;
 });
 
-Mock.mock("/user/test", "get", () => {
+Mock.mock("/mock/user/test", "get", () => {
   const res = Mock.mock({
     username: "@cname",
     time: "@now()",

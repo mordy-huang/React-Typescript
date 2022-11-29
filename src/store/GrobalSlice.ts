@@ -1,7 +1,6 @@
-import { testMockData } from "@/services/user";
+import { testMockData, validateAccountRequest } from "@/services/user";
 import { GrobalState, LoginAccount, LoginInfo, ResponseBody } from "@/types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
 import { RootState } from ".";
 import { push } from "react-router-redux";
 
@@ -11,18 +10,11 @@ const initialState: GrobalState = {
   loginInfo: { username: "", loginTime: "", avator: "" },
   loading: false,
 };
-type GrobalStateKeys = keyof GrobalState;
-
 const validateAccount = createAsyncThunk(
   "grobal/validateAccount",
   async (data: LoginAccount, { dispatch, getState, extra, requestId, signal }) => {
     dispatch(setState({ loading: true }));
-    const response: ResponseBody<LoginInfo> = (
-      await axios.post(`/user/validateAccount`, {
-        username: data.username,
-        password: data.password,
-      })
-    ).data;
+    const response: ResponseBody<LoginInfo> =  (await validateAccountRequest(data.username,data.password)).data
     if(response.success){
       dispatch(setState({ loginInfo: response.data }));
       dispatch(setState({ isLogin: true }));

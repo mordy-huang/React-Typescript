@@ -9,8 +9,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import "./mocks/index";
 import "./index.less";
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container: HTMLElement = document.getElementById("root")!;
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -22,3 +23,4 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+

@@ -13,9 +13,7 @@ const persistConfig = {
   key: 'root',
   storage,
 }
-
-
-
+  
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({ 
@@ -28,15 +26,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 // combineReducers({ })
 export const store = configureStore({
   reducer: persistedReducer,
-  // {
-  //   router: connectRouter(history) as Reducer<any, unknown>,
-  //   global: grobalReducer,
-  //   counter: counterReducer,
-  // },
   devTools:process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-      // .concat(logger)
+      .concat(logger)
       .concat(routerMiddleware(history)),
 });
 export const persistor = persistStore(store)

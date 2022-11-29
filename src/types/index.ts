@@ -7,7 +7,7 @@ interface GrobalState {
 interface LoginInfo {
   username: string;
   loginTime: string;
-  avator:string;
+  avator: string;
 }
 
 interface ResponseBody<T> {
@@ -19,7 +19,6 @@ interface ResponseBody<T> {
 interface LoginAccount {
   username: string;
   password: string;
-  
 }
 
-export type { ResponseBody, LoginAccount, GrobalState,LoginInfo};
+export type { ResponseBody, LoginAccount, GrobalState, LoginInfo };
