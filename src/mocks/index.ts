@@ -1,5 +1,6 @@
 import { LoginAccount } from "@/types";
 import Mock from "mockjs";
+import { v4 as uuid } from "uuid";
 
 const Random = Mock.Random;
 Mock.mock("/mock/user/validateAccount", "post", (data) => {
@@ -34,4 +35,15 @@ Mock.mock("/mock/user/test", "get", () => {
     data: res,
     msg:"ok"
   };
+});
+
+
+Mock.mock("/mock/toduList/get", "get", () => {
+  return Mock.mock({
+    "data|1-10": [{
+      "name":"@cname",
+      "id":"@guid"
+    }],
+    msg:"ok"
+  });
 });

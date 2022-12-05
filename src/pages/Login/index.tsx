@@ -11,44 +11,13 @@ import { AppDispatch } from "@/store";
 import { login } from "../Home/models/HomeSlice";
 import { useDispatch } from "react-redux";
 import { testMock, validateAccount } from "@/store/GrobalSlice";
+import { getErrorsFromValidationError, InputTextScheme } from "@/constants/common";
 export interface Values {
   username: string;
   password: string;
   remember: boolean;
 }
-const INVALID_REQUIRED = "is required.";
-const InputTextScheme = (fieldName: string) => {
-  return Yup.string()
-    .nullable()
-    .trim()
-    .required(fieldName + " " + INVALID_REQUIRED);
-};
-// handleCompleteInspection = (values, setSubmitting, setErrors) => {
-//   setSubmitting(true);
-//   const validationSchema = getValidationSchema(values);
-//   try {
-//     validationSchema.validateSync(values, { abortEarly: false });
-//     this.props
-//       .dispatch({ type: 'smtInspectionEditing/updateStatusToCompleteInspection' })
-//       .then(isSuccess => {
-//         this.props.dispatch({
-//           type: 'smtInspectionEditing/refreshInspection',
-//           activeTabKey: '2',
-//         });
-//         setSubmitting(false);
-//       });
-//     setSubmitting(false);
-//     return {};
-//   } catch (error) {
-//     // console.log('error exist');
-//     const errors = getErrorsFromValidationError(error);
-//     window.scrollTo(0, 0);
-//     const tabKey = _findKey(errors.count, o => o > 0);
-//     this.props.updateActiveInspectioFormTabKey(tabKey);
-//     setErrors(errors);
-//     setSubmitting(false);
-//   }
-// };
+
 const SignupSchema = Yup.object().shape({
   username: InputTextScheme("Username"),
   password: InputTextScheme("Pass Word"),
@@ -57,26 +26,11 @@ const SignupSchema = Yup.object().shape({
 
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const formikRef = React.useRef<FormikProps<Values>>(null);
+  const formikRef = useRef<FormikProps<Values>>(null);
   const onSubmit = () => {
     formikRef.current?.submitForm();
   };
 
-  function getErrorsFromValidationError(validationError: any) {
-    console.log("geterrorwith count");
-    const FIRST_ERROR = 0;
-    const errors = validationError.inner.reduce((errors:any, error:any) => {
-      console.log(errors,error,"errors");
-      
-      return {
-        ...errors,
-        [error.path]: error.errors[FIRST_ERROR],
-      };
-    }, {});
-
-    const result = { ...errors };
-    return { ...errors };
-  }
 
   return (
     <>

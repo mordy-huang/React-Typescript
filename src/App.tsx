@@ -8,7 +8,7 @@ import PageHeader from "./components/PageHeader";
 let globalErrModal: any = null;
 
 function handleGlobalError(event: ErrorEvent) {
-  debugger;
+  // debugger;
   event.preventDefault();
   event.stopPropagation();
   console.error(event.error);
@@ -40,18 +40,13 @@ function handleGlobalError(event: ErrorEvent) {
       ),
       onOk: () => {
         globalErrModal = null;
-        // if (globalThis.icusmsWinMode == 'popup') {
-        //   globalThis.close();
-        // } else {
-        //   location = '/spa/';
-        // }
       },
     });
   }
 }
 window.addEventListener("error", handleGlobalError);
 window.onunhandledrejection = (e: PromiseRejectionEvent) => {
-  debugger;
+  // debugger;
   throw new Error(e.reason.stack);
 };
 

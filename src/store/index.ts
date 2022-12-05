@@ -2,6 +2,8 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import counterReducer from "@/pages/Home/models/HomeSlice";
+import toduListReducer  from "@/pages/Test/models/TodoListSlice";
+
 import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware, RouterState } from "connected-react-router";
 import { useDispatch } from "react-redux";
@@ -20,6 +22,7 @@ const rootReducer = combineReducers({
   router: connectRouter(history) as Reducer<any, unknown>,
   global: grobalReducer,
   counter: counterReducer,
+  toduList: toduListReducer
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

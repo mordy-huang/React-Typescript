@@ -1,30 +1,28 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\29389\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D @types/redux-persis
+  C:\Program Files\nodejs\node.exe F:\Program Files (x86)\Yarn\bin\yarn.js add uuid
 
 PATH: 
-  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;D:\Program Files\Git\bin;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Program file\Python\Scripts\;E:\Program file\Python\;C:\Users\29389\AppData\Local\Microsoft\WindowsApps;E:\Program file\Microsoft VS Code\bin;C:\Users\29389\AppData\Roaming\npm;E:\java\IntelliJ IDEA 2020.2.3\bin;;E:\java\jdk1.8\bin;E:\java\jdk1.8\jre\bin;E:\Program file\Gradle\gradle-6.7\bin;C:\Windows\System32\ping;D:\Program Files\Git\bin;E:\nvm;C:\Program Files\nodejs;C:\Users\29389\AppData\Local\GitHubDesktop\bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;.;F:\JavaEnviroment\Java\jdk1.8.0_191\lib;F:\JavaEnviroment\Java\jdk1.8.0_191\bin;F:\Program Files (x86)\Yarn\bin\;F:\JavaEnviroment\apache-maven-3.5.4\bin\;F:\JavaEnviroment\apache-maven-3.5.4\bin;F:\Program Files (x86)\TortoiseSVN\bin;F:\Program Files (x86)\Git\cmd;E:\flutter\bin;E:\flutter\dev;F:\JavaEnviroment\nvm;C:\Program Files\nodejs;F:\JavaEnviroment\gradle-7.0.2\bin;C:\Users\93655\AppData\Local\Yarn\bin;F:\Program Files (x86)\node-v14.15.1-win-x64;F:\Program Files (x86)\Microsoft VS Code\bin;F:\Program Files (x86)\node-v14.15.1-win-x64\node_modules\npm;F:\JavaEnviroment\nodejs;C:\Program Files\heroku\bin;C:\Program Files (x86)\nodejs\node_global;F:\JavaEnviroment\nvm;C:\Program Files\nodejs;F:\Program Files (x86)\drupat\drush;F:\Program Files (x86)\Xshell\;F:\Program Files (x86)\Python\Python38\Scripts\;F:\Program Files (x86)\Python\Python38\;F:\Program Files (x86)\Scripts\;F:\Program Files (x86)\;C:\Users\93655\AppData\Local\GitHubDesktop\bin;C:\ProgramData\93655\GitHubDesktop\bin;F:\Program Files\yarn\global\bin
 
 Yarn version: 
-  1.22.5
+  1.22.4
 
 Node version: 
-  18.0.0
+  16.0.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/@types%2fredux-persis: [NOT_FOUND] @types/redux-persis not found
-      at params.callback [as _callback] (C:\Users\29389\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
-      at self.callback (C:\Users\29389\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (C:\Users\29389\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
-      at Request.emit (node:events:527:28)
-      at Gunzip.<anonymous> (C:\Users\29389\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
-      at Object.onceWrapper (node:events:641:28)
-      at Gunzip.emit (node:events:527:28)
-      at endReadableNT (node:internal/streams/readable:1344:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: https://registry.npmjs.org/uuid: tunneling socket could not be established, cause=connect ECONNREFUSED 127.0.0.1:10809
+      at ClientRequest.onError (F:\Program Files (x86)\Yarn\lib\cli.js:152234:17)
+      at Object.onceWrapper (node:events:472:26)
+      at ClientRequest.emit (node:events:365:28)
+      at Socket.socketErrorListener (node:_http_client:447:9)
+      at Socket.emit (node:events:365:28)
+      at emitErrorNT (node:internal/streams/destroy:193:8)
+      at emitErrorCloseNT (node:internal/streams/destroy:158:3)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -91,6 +89,7 @@ npm manifest:
       "@babel/preset-env": "^7.20.2",
       "@babel/preset-react": "^7.18.6",
       "@reduxjs/toolkit": "^1.9.0",
+      "@types/redux-persist": "^4.3.1",
       "@typescript-eslint/eslint-plugin": "^5.42.1",
       "@typescript-eslint/parser": "^5.42.1",
       "antd": "^4.24.1",
@@ -1821,6 +1820,13 @@ Lockfile:
     integrity sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==
     dependencies:
       redux "^4.0.0"
+  
+  "@types/redux-persist@^4.3.1":
+    version "4.3.1"
+    resolved "https://registry.npmmirror.com/@types/redux-persist/-/redux-persist-4.3.1.tgz#aa4c876859e0bea5155e5f7980e5b8c4699dc2e6"
+    integrity sha512-YkMnMUk+4//wPtiSTMfsxST/F9Gh9sPWX0LVxHuOidGjojHtMdpep2cYvQgfiDMnj34orXyZI+QJCQMZDlafKA==
+    dependencies:
+      redux-persist "*"
   
   "@types/retry@0.12.0":
     version "0.12.0"
@@ -6515,7 +6521,7 @@ Lockfile:
     dependencies:
       deep-diff "^0.3.5"
   
-  redux-persist@^6.0.0:
+  redux-persist@*, redux-persist@^6.0.0:
     version "6.0.0"
     resolved "https://registry.npmmirror.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
     integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
