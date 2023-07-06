@@ -38,7 +38,7 @@ Mock.mock("/mock/user/test", "get", () => {
 });
 
 
-Mock.mock("/mock/toduList/get", "get", () => {
+Mock.mock("/mock/toduList/get", "get", () => { 
   return Mock.mock({
     "data|1-10": [{
       "name":"@cname",
